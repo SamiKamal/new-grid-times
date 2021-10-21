@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/macro';
+import { QUERIES } from '../../constants';
 
 const MainStory = ({
   id,
@@ -24,6 +25,7 @@ const MainStory = ({
 };
 
 const Wrapper = styled.article`
+  --line-clamp: 8;
   color: var(--color-gray-900);
 `;
 
@@ -44,6 +46,15 @@ const Abstract = styled.p`
   font-size: 1rem;
   margin-bottom: 1em;
   white-space: pre-wrap;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--line-clamp);
+  overflow: hidden;
+
+  @media ${QUERIES.tabletOnly}{
+    -webkit-line-clamp: calc(var(--line-clamp) * 2);
+  }
+
 `;
 
 const Location = styled.span`
